@@ -1,16 +1,29 @@
+"use client";
+
 import styled from "styled-components";
 
 const Home = () => {
   return (
-    <div>
+    <Wrapper>
       <Title>
         Yusuke Naito <br />
         Portfolio
       </Title>
-    </div>
+    </Wrapper>
   );
 };
 
 export default Home;
 
-const Title = styled.h1``;
+const Wrapper = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+`;
+
+const Title = styled.h1`
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #111;
+`;

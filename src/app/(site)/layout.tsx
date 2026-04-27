@@ -1,5 +1,8 @@
+"use client";
+
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import styled from "styled-components";
 
 export default function SiteLayout({
   children,
@@ -9,8 +12,12 @@ export default function SiteLayout({
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <Main>{children}</Main>
       <Footer />
     </>
   );
 }
+
+const Main = styled.main`
+  flex: 1;
+`;
