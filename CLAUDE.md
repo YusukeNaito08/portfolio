@@ -47,15 +47,24 @@
 
 ### `/obsidian/bug` （エラー・Q&A記録）
 
-- **用途**: トラブル解決のプロセス（エラー、質問、回答）を記録する。
+- **用途**: エラーの解決や、質問して解決したことを専用ノートとして保存する。
+- **保存先ルール**:
+  1. 会話から技術スタックを特定（例: `Next.js`, `AWS`, `TypeScript`）
+  2. パスを生成: `03_Learning/[技術名]/YYYY-MM-DD_[概要].md`（YYYYMMDDは今日の日付）
+  3. 同名ファイルが存在する場合は末尾に `_2`, `_3` と連番を付けて衝突を回避
+  4. `obsidian create` コマンドで新規ファイルとして保存
+- **コマンド**:
+  ```
+  obsidian create path="03_Learning/[技術名]/YYYY-MM-DD_[概要].md" content="..." vault=knowledge_base
+  ```
 - **フォーマット**:
   ```
-  \n> [!bug]+ HH:MM — [[エラーの概要]]（HH:MMは現在時刻・JST）
+  > [!bug]+ YYYY-MM-DD — [[概要]]
   > 
   > **Context:** [何をしていた時に発生したか]
   > 
   > > [!failure] Issue
-  > > [エラー内容・課題]
+  > > [エラー内容・課題・質問]
   > 
   > > [!success] Solution
   > > [解決策・回答]
