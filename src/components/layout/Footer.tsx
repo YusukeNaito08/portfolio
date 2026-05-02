@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <Wrapper>
       <Inner>
-        <p>© {new Date().getFullYear()} Yusuke Naito</p>
+        <p>© {new Date().getFullYear()}</p>
       </Inner>
     </Wrapper>
   );

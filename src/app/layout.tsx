@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yusuke Naito Portfplio",
-  description: "Yusuke Naito's portfolio.",
+  title: "Portfplio",
+  description: "portfolio.",
 };
 
 export default function RootLayout({

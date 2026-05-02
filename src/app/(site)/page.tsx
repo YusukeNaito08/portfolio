@@ -5,10 +5,7 @@ import styled from "styled-components";
 const Home = () => {
   return (
     <Wrapper>
-      <Title>
-        Yusuke Naito <br />
-        Portfolio
-      </Title>
+      <Title>Home</Title>
     </Wrapper>
   );
 };
