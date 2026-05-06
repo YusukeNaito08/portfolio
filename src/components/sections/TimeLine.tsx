@@ -25,20 +25,20 @@ export const TimeLine = () => {
 
   if (loading)
     return (
-      <Wrapper>
+      <Wrapper id="logs">
         <State>Loading...</State>
       </Wrapper>
     );
   if (error)
     return (
-      <Wrapper>
+      <Wrapper id="logs">
         <State>Error: {error}</State>
       </Wrapper>
     );
   if (!data) return null;
 
   return (
-    <Wrapper>
+    <Wrapper id="logs">
       <Title>Logs.</Title>
       <Description>Dev logs, daily experiments, and technical articles.</Description>
       <ListContainer>

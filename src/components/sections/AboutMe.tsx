@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const AboutMe = () => {
   return (
-    <Wrapper>
+    <Wrapper id="about">
       <Inner>
         <Title>About Me.</Title>
         <Text>

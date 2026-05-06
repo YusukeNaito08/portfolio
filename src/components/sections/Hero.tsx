@@ -1,10 +1,50 @@
-import styled from "styled-components";
+"use client";
+
+import styled, { keyframes } from "styled-components";
+import { useEffect, useState } from "react";
 
 export const Hero = () => {
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    if (window.innerWidth <= 768) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    const aboutSection = document.getElementById("about");
+    const logsSection = document.getElementById("logs");
+
+    if (aboutSection) observer.observe(aboutSection);
+    if (logsSection) observer.observe(logsSection);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Wrapper>
-      <Title>Frontend Developer</Title>
-      <Subtitle>welcome to my page.</Subtitle>
+      <FluidShapeCenter />
+
+      <Content>
+        <Title>Frontend Developer</Title>
+        <Subtitle>welcome to my page.</Subtitle>
+
+        <Nav>
+          <NavItem href="#about" $isActive={activeSection === "about"}>
+            About
+          </NavItem>
+          <NavItem href="#logs" $isActive={activeSection === "logs"}>
+            Logs
+          </NavItem>
+        </Nav>
+      </Content>
     </Wrapper>
   );
 };
@@ -17,6 +57,39 @@ const Wrapper = styled.section`
   justify-content: center;
   text-align: center;
   padding: 2rem;
+  position: relative;
+`;
+
+const Content = styled.div`
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const morph = keyframes`
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+`;
+
+const FluidShapeCenter = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background-color: #f3f4f6;
+  z-index: 0;
+  pointer-events: none;
+  animation: ${morph} 8s ease-in-out infinite;
+
+  @media (max-width: 768px) {
+    width: 280px;
+    height: 280px;
+  }
 `;
 
 const Title = styled.h1`
@@ -34,4 +107,44 @@ const Subtitle = styled.p`
   margin-top: 1rem;
   font-weight: 400;
   letter-spacing: 0.05em;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 4rem;
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+    gap: 1rem;
+  }
+`;
+
+const NavItem = styled.a<{ $isActive: boolean }>`
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  color: ${({ $isActive }) => ($isActive ? "#111" : "#aaa")};
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    color: #444;
+
+    &:active {
+      color: #111;
+    }
+  }
+
+  &:hover {
+    @media (min-width: 769px) {
+      color: #111;
+      transform: translateX(4px);
+    }
+  }
 `;
