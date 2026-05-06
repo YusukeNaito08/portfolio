@@ -15,7 +15,6 @@ export default function Footer() {
 const Wrapper = styled.footer`
   width: 100%;
   padding: 0 2rem;
-  border-top: 1px solid #e5e5e5;
 `;
 
 const Inner = styled.div`
