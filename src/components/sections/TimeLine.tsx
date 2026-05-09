@@ -25,22 +25,22 @@ export const TimeLine = () => {
 
   if (loading)
     return (
-      <Wrapper id="logs">
+      <Wrapper id="activity">
         <State>Loading...</State>
       </Wrapper>
     );
   if (error)
     return (
-      <Wrapper id="logs">
+      <Wrapper id="activity">
         <State>Error: {error}</State>
       </Wrapper>
     );
   if (!data) return null;
 
   return (
-    <Wrapper id="logs">
-      <Title>Logs.</Title>
-      <Description>Dev logs, daily experiments, and technical articles.</Description>
+    <Wrapper id="activity">
+      <Title>Activity.</Title>
+      <Description> Daily experiments, dev logs, and technical articles.</Description>
       <ListContainer>
         <List>
           {data.map((item) => {

@@ -40,8 +40,8 @@ export const Hero = () => {
           <NavItem href="#about" $isActive={activeSection === "about"}>
             About
           </NavItem>
-          <NavItem href="#logs" $isActive={activeSection === "logs"}>
-            Logs
+          <NavItem href="#activity" $isActive={activeSection === "activity"}>
+            Activity
           </NavItem>
         </Nav>
       </Content>
