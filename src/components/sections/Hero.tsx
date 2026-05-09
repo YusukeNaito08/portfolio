@@ -20,10 +20,10 @@ export const Hero = () => {
     );
 
     const aboutSection = document.getElementById("about");
-    const logsSection = document.getElementById("logs");
+    const activitySection = document.getElementById("activity");
 
     if (aboutSection) observer.observe(aboutSection);
-    if (logsSection) observer.observe(logsSection);
+    if (activitySection) observer.observe(activitySection);
 
     return () => observer.disconnect();
   }, []);
